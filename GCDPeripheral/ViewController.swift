@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import C4Core
+import C4UI
 
-public class ViewController: UIViewController {
+public class ViewController: C4CanvasController {
     public var label = UILabel()
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         label.frame = view.frame
         label.text = "-"
         view.addSubview(label)
+        
+        canvas.addTapGestureRecognizer { (location, state) -> () in
+            NSNotificationCenter.defaultCenter().postNotificationName("tapped", object: self, userInfo: ["location":"\(location.x)|\(location.y)"])
+        }
     }
-
+    
 }
 
 

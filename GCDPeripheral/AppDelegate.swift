@@ -25,6 +25,8 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
         netServiceBrowser?.searchForServicesOfType("_m-o._tcp.", inDomain: "local.")
         vc = self.window?.rootViewController as? ViewController
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "tapped:", name: "tapped", object: nil)
+        
         return true
     }
 
@@ -160,6 +162,19 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
 
     public func socket(sock: GCDAsyncSocket!, didReadPartialDataOfLength partialLength: UInt, tag: Int) {
         println("didReadPartialDataOfLength")
+    }
+    
+    public func tapped(notification: NSNotification) {
+        if let d = notification.userInfo as? [String:AnyObject] {
+            if let l = d["location"] as? String {
+                let message = "tap|\(l)"
+                
+            } else {
+                println("couldn't extract location from dictionary")
+            }
+        } else {
+            println("couldn't extract userInfo from notification")
+        }
     }
 }
 
