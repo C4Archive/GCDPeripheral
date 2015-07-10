@@ -13,6 +13,7 @@
 		1FB46EF31B4F365E0017345C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB46EF21B4F365E0017345C /* Images.xcassets */; };
 		1FB46EF61B4F365E0017345C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB46EF41B4F365E0017345C /* LaunchScreen.xib */; };
 		1FB46F021B4F365E0017345C /* GCDPeripheralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB46F011B4F365E0017345C /* GCDPeripheralTests.swift */; };
+		1FB46F3D1B4F39600017345C /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB46F3C1B4F39600017345C /* GCDAsyncSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,9 @@
 		1FB46EFB1B4F365E0017345C /* GCDPeripheralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCDPeripheralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB46F001B4F365E0017345C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB46F011B4F365E0017345C /* GCDPeripheralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDPeripheralTests.swift; sourceTree = "<group>"; };
+		1FB46F3A1B4F39600017345C /* GCDPeripheral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GCDPeripheral-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FB46F3B1B4F39600017345C /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		1FB46F3C1B4F39600017345C /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +84,12 @@
 				1FB46EEB1B4F365E0017345C /* AppDelegate.swift */,
 				1FB46EED1B4F365E0017345C /* ViewController.swift */,
 				1FB46EEF1B4F365E0017345C /* Main.storyboard */,
+				1FB46F3B1B4F39600017345C /* GCDAsyncSocket.h */,
+				1FB46F3C1B4F39600017345C /* GCDAsyncSocket.m */,
 				1FB46EF21B4F365E0017345C /* Images.xcassets */,
 				1FB46EF41B4F365E0017345C /* LaunchScreen.xib */,
 				1FB46EE91B4F365E0017345C /* Supporting Files */,
+				1FB46F3A1B4F39600017345C /* GCDPeripheral-Bridging-Header.h */,
 			);
 			path = GCDPeripheral;
 			sourceTree = "<group>";
@@ -212,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB46F3D1B4F39600017345C /* GCDAsyncSocket.m in Sources */,
 				1FB46EEE1B4F365E0017345C /* ViewController.swift in Sources */,
 				1FB46EEC1B4F365E0017345C /* AppDelegate.swift in Sources */,
 			);
@@ -340,9 +348,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GCDPeripheral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GCDPeripheral/GCDPeripheral-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +361,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GCDPeripheral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GCDPeripheral/GCDPeripheral-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +422,7 @@
 				1FB46F071B4F365E0017345C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FB46F081B4F365E0017345C /* Build configuration list for PBXNativeTarget "GCDPeripheralTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +431,7 @@
 				1FB46F0A1B4F365E0017345C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
