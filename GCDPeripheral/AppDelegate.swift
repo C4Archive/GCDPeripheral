@@ -15,14 +15,16 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
     var serverAddresses : [NSData]?
     var asyncSocket : GCDAsyncSocket?
     var connected = false
+    var vc : ViewController?
 
     public var window: UIWindow?
-
 
     public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         netServiceBrowser = NSNetServiceBrowser()
         netServiceBrowser?.delegate = self
         netServiceBrowser?.searchForServicesOfType("_m-o._tcp.", inDomain: "local.")
+        vc = self.window?.rootViewController as? ViewController
+
         return true
     }
 
@@ -144,9 +146,11 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
     }
 
     public func socket(sock: GCDAsyncSocket!, didReadData data: NSData!, withTag tag: Int) {
-        let s = NSString(data: data, encoding: NSUTF8StringEncoding)
-        println(s)
-        println("didReadData")
+        if let d = NSString(data: data, encoding: NSUTF8StringEncoding) {
+            println(d)
+            vc?.label.text = d as String
+        }
+
         sock.readDataWithTimeout(-1, tag: 0)
     }
 

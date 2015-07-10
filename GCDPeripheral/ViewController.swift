@@ -8,11 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+public class ViewController: UIViewController {
+    public var label = UILabel()
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
+        label.frame = view.frame
+        label.text = "-"
+        view.addSubview(label)
     }
+
 }
 
 
