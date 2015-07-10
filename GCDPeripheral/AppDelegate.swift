@@ -57,11 +57,13 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
     public func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didFindService aNetService: NSNetService, moreComing: Bool) {
         println("didFindService")
 
-        if (serverService == nil) {
-            serverService = aNetService;
-            serverService?.delegate = self
-            serverService?.resolveWithTimeout(5.0)
+        if serverService != nil {
+            serverService?.stop()
+            serverService?.delegate =  nil
         }
+        serverService = aNetService;
+        serverService?.delegate = self
+        serverService?.resolveWithTimeout(5.0)
     }
 
     public func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didNotSearch errorDict: [NSObject : AnyObject]) {
@@ -74,6 +76,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
 
     public func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didRemoveService aNetService: NSNetService, moreComing: Bool) {
         println("didRemoveService")
+        asyncSocket?.disconnect()
     }
 
     public func netServiceBrowserDidStopSearch(aNetServiceBrowser: NSNetServiceBrowser) {
@@ -85,14 +88,18 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
     }
 
     public func netServiceDidResolveAddress(sender: NSNetService) {
-        if serverAddresses == nil {
+        println("resolved")
+        if serverAddresses != nil {
+            serverAddresses?.removeAll(keepCapacity: false)
+        } else {
             serverAddresses = [NSData]()
-            if let count = sender.addresses?.count,
-                let addresses = sender.addresses as? [NSData] {
-                    for i in 0..<count {
-                        serverAddresses?.append(addresses[i])
-                    }
-            }
+        }
+
+        if let count = sender.addresses?.count,
+            let addresses = sender.addresses as? [NSData] {
+                for i in 0..<count {
+                    serverAddresses?.append(addresses[i])
+                }
         }
 
         if (asyncSocket == nil) {
@@ -102,9 +109,14 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
         connectToNextAddress()
     }
 
+    public func netService(sender: NSNetService, didNotResolve errorDict: [NSObject : AnyObject]) {
+        println("didNotResolve")
+    }
+
     public func connectToNextAddress() {
         var done = false
 
+        println(serverAddresses?.count)
         while !done && serverAddresses?.count > 0 {
             var address = serverAddresses?[0]
             serverAddresses?.removeAtIndex(0)
@@ -116,14 +128,34 @@ public class AppDelegate: UIResponder, UIApplicationDelegate, NSNetServiceBrowse
     }
 
     public func socket(sock: GCDAsyncSocket!, didConnectToHost host: String!, port: UInt16) {
-        connected = true
+        println("did connect")
+        let handshake = "handshake-from-peripheral".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let md = NSMutableData()
+        md.appendData(handshake!)
+        md.appendData(GCDAsyncSocket.CRLFData())
+        sock.writeData(md, withTimeout: -1, tag: 0)
+        sock.readDataToData(GCDAsyncSocket.CRLFData(), withTimeout: -1, tag: 0)
     }
 
     public func socketDidDisconnect(sock: GCDAsyncSocket!, withError err: NSError!) {
-        if !connected {
-            connectToNextAddress()
-        }
+        println("disconnected")
+        asyncSocket?.disconnect()
+        connectToNextAddress()
     }
 
+    public func socket(sock: GCDAsyncSocket!, didReadData data: NSData!, withTag tag: Int) {
+        let s = NSString(data: data, encoding: NSUTF8StringEncoding)
+        println(s)
+        println("didReadData")
+        sock.readDataWithTimeout(-1, tag: 0)
+    }
+
+    public func socket(sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
+        println("didWriteDataWithTag")
+    }
+
+    public func socket(sock: GCDAsyncSocket!, didReadPartialDataOfLength partialLength: UInt, tag: Int) {
+        println("didReadPartialDataOfLength")
+    }
 }
 
