@@ -14,6 +14,10 @@
 		1FB46EF61B4F365E0017345C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB46EF41B4F365E0017345C /* LaunchScreen.xib */; };
 		1FB46F021B4F365E0017345C /* GCDPeripheralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB46F011B4F365E0017345C /* GCDPeripheralTests.swift */; };
 		1FB46F3D1B4F39600017345C /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB46F3C1B4F39600017345C /* GCDAsyncSocket.m */; };
+		D9082C521B505B9A00A46C55 /* C4UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9082C4B1B505AE300A46C55 /* C4UI.framework */; };
+		D9082C531B505B9A00A46C55 /* C4UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9082C4B1B505AE300A46C55 /* C4UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9082C561B505B9A00A46C55 /* C4Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9082C4F1B505AE300A46C55 /* C4Core.framework */; };
+		D9082C571B505B9A00A46C55 /* C4Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9082C4F1B505AE300A46C55 /* C4Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +28,64 @@
 			remoteGlobalIDString = 1FB46EE51B4F365E0017345C;
 			remoteInfo = GCDPeripheral;
 		};
+		D9082C4A1B505AE300A46C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614F824319DB5ED3001DF1D4;
+			remoteInfo = C4UI;
+		};
+		D9082C4C1B505AE300A46C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614F824E19DB5ED4001DF1D4;
+			remoteInfo = C4UITests;
+		};
+		D9082C4E1B505AE300A46C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A9596D191A054A960023323D;
+			remoteInfo = C4Core;
+		};
+		D9082C501B505AE300A46C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A9596D231A054A960023323D;
+			remoteInfo = C4CoreTests;
+		};
+		D9082C541B505B9A00A46C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 614F824219DB5ED3001DF1D4;
+			remoteInfo = C4UI;
+		};
+		D9082C581B505B9A00A46C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A9596D181A054A960023323D;
+			remoteInfo = C4Core;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D9082C5A1B505B9A00A46C55 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D9082C571B505B9A00A46C55 /* C4Core.framework in Embed Frameworks */,
+				D9082C531B505B9A00A46C55 /* C4UI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1FB46EE61B4F365E0017345C /* GCDPeripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCDPeripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +101,7 @@
 		1FB46F3A1B4F39600017345C /* GCDPeripheral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GCDPeripheral-Bridging-Header.h"; sourceTree = "<group>"; };
 		1FB46F3B1B4F39600017345C /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		1FB46F3C1B4F39600017345C /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = C4iOS.xcodeproj; path = ../../../C4iOS/C4iOS.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9082C561B505B9A00A46C55 /* C4Core.framework in Frameworks */,
+				D9082C521B505B9A00A46C55 /* C4UI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +150,7 @@
 				1FB46EEF1B4F365E0017345C /* Main.storyboard */,
 				1FB46F3B1B4F39600017345C /* GCDAsyncSocket.h */,
 				1FB46F3C1B4F39600017345C /* GCDAsyncSocket.m */,
+				D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */,
 				1FB46EF21B4F365E0017345C /* Images.xcassets */,
 				1FB46EF41B4F365E0017345C /* LaunchScreen.xib */,
 				1FB46EE91B4F365E0017345C /* Supporting Files */,
@@ -119,6 +184,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D9082C441B505AE300A46C55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9082C4B1B505AE300A46C55 /* C4UI.framework */,
+				D9082C4D1B505AE300A46C55 /* C4UITests.xctest */,
+				D9082C4F1B505AE300A46C55 /* C4Core.framework */,
+				D9082C511B505AE300A46C55 /* C4CoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,10 +205,13 @@
 				1FB46EE21B4F365E0017345C /* Sources */,
 				1FB46EE31B4F365E0017345C /* Frameworks */,
 				1FB46EE41B4F365E0017345C /* Resources */,
+				D9082C5A1B505B9A00A46C55 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D9082C551B505B9A00A46C55 /* PBXTargetDependency */,
+				D9082C591B505B9A00A46C55 /* PBXTargetDependency */,
 			);
 			name = GCDPeripheral;
 			productName = GCDPeripheral;
@@ -186,6 +265,12 @@
 			mainGroup = 1FB46EDD1B4F365E0017345C;
 			productRefGroup = 1FB46EE71B4F365E0017345C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D9082C441B505AE300A46C55 /* Products */;
+					ProjectRef = D9082C431B505AE300A46C55 /* C4iOS.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1FB46EE51B4F365E0017345C /* GCDPeripheral */,
@@ -193,6 +278,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D9082C4B1B505AE300A46C55 /* C4UI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = C4UI.framework;
+			remoteRef = D9082C4A1B505AE300A46C55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9082C4D1B505AE300A46C55 /* C4UITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = C4UITests.xctest;
+			remoteRef = D9082C4C1B505AE300A46C55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9082C4F1B505AE300A46C55 /* C4Core.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = C4Core.framework;
+			remoteRef = D9082C4E1B505AE300A46C55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9082C511B505AE300A46C55 /* C4CoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = C4CoreTests.xctest;
+			remoteRef = D9082C501B505AE300A46C55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1FB46EE41B4F365E0017345C /* Resources */ = {
@@ -240,6 +356,16 @@
 			isa = PBXTargetDependency;
 			target = 1FB46EE51B4F365E0017345C /* GCDPeripheral */;
 			targetProxy = 1FB46EFC1B4F365E0017345C /* PBXContainerItemProxy */;
+		};
+		D9082C551B505B9A00A46C55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = C4UI;
+			targetProxy = D9082C541B505B9A00A46C55 /* PBXContainerItemProxy */;
+		};
+		D9082C591B505B9A00A46C55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = C4Core;
+			targetProxy = D9082C581B505B9A00A46C55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
